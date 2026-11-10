@@ -3,7 +3,7 @@
 > **Luxury Weddings · Bespoke Stage Productions · Destination Celebrations**  
 > *Pavaratty, Thrissur, Kerala — 680507*
 
-[![Website](https://img.shields.io/badge/Live_Site-Visit-gold?style=for-the-badge&logo=google-chrome&logoColor=white)](https://sridhinraj.github.io/mivi-events/)
+[![Website](https://img.shields.io/badge/Live_Site-Visit-gold?style=for-the-badge&logo=google-chrome&logoColor=white)](https://mivievent.in/)
 [![Instagram](https://img.shields.io/badge/@mivi__events-Follow-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/mivi_events/)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-Connect-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/918877229985)
 
