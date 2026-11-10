@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -101,6 +101,63 @@
   }
   .detail .acts button:active{transform:translateY(0);
     box-shadow:0 1px 2px rgba(52,34,16,.22),0 4px 10px -2px rgba(52,34,16,.24)}
+
+  @media (max-width: 768px) {
+    .wash {
+      width: 100vw;
+      background: radial-gradient(circle at 50% 80%, rgba(206,186,157,.95) 0%, rgba(206,186,157,0) 80%);
+    }
+    .detail {
+      left: 12px;
+      right: 12px;
+      top: auto;
+      bottom: 74px;
+      transform: none;
+      width: auto;
+      max-width: calc(100% - 24px);
+      padding: 16px 20px;
+      background: rgba(254, 251, 244, 0.96);
+      border: 1.5px solid rgba(138, 103, 24, 0.4);
+      border-radius: 16px;
+      box-shadow: 0 12px 36px rgba(24, 6, 13, 0.35);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .detail .meta, .detail h2, .detail p, .detail .acts {
+      max-width: 100%;
+    }
+    .detail .meta {
+      font-size: 11px;
+      margin: 0 0 5px;
+    }
+    .detail h2 {
+      font-size: 21px;
+      margin: 0 0 6px;
+      line-height: 1.15;
+    }
+    .detail p {
+      font-size: 13px;
+      line-height: 1.45;
+      margin: 0 0 14px;
+    }
+    .detail .acts button {
+      padding: 11px 18px;
+      font-size: 13px;
+    }
+    footer {
+      padding: 14px 0 10px;
+    }
+    .tlmark {
+      width: 28px;
+      height: 28px;
+    }
+    .tli p {
+      font-size: 11px;
+    }
+    .tli h2 {
+      font-size: 12.5px;
+    }
+  }
 
   .hint{position:fixed;z-index:16;left:0;top:0;transform:translate(10px,10px);
     background:#fdf8ef;color:var(--ink);border-radius:999px;padding:8px 13px;
@@ -749,7 +806,7 @@ const K = {
   mFill: 0.62, mDrop: 0.22,
 };
 const MOBILE_Q = window.matchMedia('(max-width: 767px)');
-let MOBILE = MOBILE_Q.matches;
+let MOBILE = false; // Always use the desktop bookshelf view across all devices
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(REDUCED){ K.introStagger=0; K.introWallFade=260; K.introFade=200;
              K.hoverLift=260; K.hoverDrop=200; K.activeDuration=300;
@@ -1745,8 +1802,10 @@ function activeZ(){
 function toActive(B){
   S.anim='animatingForward'; hoverIn(B);
   B.tSeat.start([0],K.activeDuration*0.55,easeSettle,K.activeDuration*0.12);
-  const ay = MOBILE ? mobileTargetY() : K.boxCY-0.02;
-  B.tActiveP.start([MOBILE?0:K.activeX,ay,activeZ()],K.activeDuration,activeEase);
+  const isNarrow = VW < 768;
+  const ay = isNarrow ? (K.boxCY + 0.32) : (K.boxCY - 0.02);
+  const ax = isNarrow ? 0 : K.activeX;
+  B.tActiveP.start([ax,ay,activeZ()],K.activeDuration,activeEase);
   B.tActiveR.start([...K.activeRot],K.activeDuration,activeEase);
   B.gRoot.renderOrder=10; setLayer(B,LAY_FG);
   setTimeout(()=>{ if(S.active===B) S.anim='active'; },K.activeDuration);
@@ -1830,6 +1889,7 @@ function frameCamera(){
   } else {
     const distV=K.boxY/(2*tan), distH=K.boxX/(2*tan*aspect);
     let d=K.offset*Math.max(distV,distH);
+    if(aspect < 1.0) d *= 1.08;
     const projW=VW*K.boxX/(2*d*tan*aspect);
     if(projW>K.maxWidthPx) d=VW*K.boxX/(2*K.maxWidthPx*tan*aspect);
     DIST=d;
@@ -2203,7 +2263,7 @@ function applyMode(){
   if(MOBILE)setMobileIndex(M.index,true);
   frameCamera();
 }
-MOBILE_Q.addEventListener('change',e=>{MOBILE=e.matches;applyMode();});
+MOBILE_Q.addEventListener('change',e=>{MOBILE=false;applyMode();});
 
 const wallFade=new Tw([0]);
 function revealChrome(){

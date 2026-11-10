@@ -86,6 +86,13 @@
   padding: 0;
 }
 
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  position: relative;
+}
+
 html {
   background: var(--bg-dark);
   color: var(--ink);
@@ -93,10 +100,15 @@ html {
   font-weight: 300;
   font-size: 16px;
   line-height: 1.6;
-  scrollbar-gutter: stable;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 768px) {
+  html {
+    scrollbar-gutter: auto;
+  }
 }
 
 body {
