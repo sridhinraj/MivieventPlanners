@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mivievent.in/sitemap.xml
+Sitemap: https://mivievents.in/sitemap.xml
 
