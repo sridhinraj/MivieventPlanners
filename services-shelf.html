@@ -825,7 +825,8 @@ const ANAS_RAHMATH_PAGES = [
   { file: 'anas-rahmath-01.webp', title: 'Anas & Rahmath: Royal Nikah & Couture Portrait', place: 'Kerala Luxury Celebrations' },
   { file: 'anas-rahmath-02.webp', title: 'Anas & Rahmath: Bespoke Floral Stage Architecture', place: 'Grand Palace' },
   { file: 'anas-rahmath-03.webp', title: 'Anas & Rahmath: Cherished Moments & Ambient Illumination', place: 'Twilight Gala' },
-  { file: 'anas-rahmath-04.webp', title: 'Anas & Rahmath: Midnight Gala Scenery & Lighting', place: 'Regal Celebrations' }
+  { file: 'anas-rahmath-04.webp', title: 'Anas & Rahmath: Midnight Gala Scenery & Lighting', place: 'Regal Celebrations' },
+  { file: 'anas-rahmath-05.webp', title: 'Anas & Rahmath: Intimate Nuptial Portraits & Fine Silks', place: 'Mivi Grand Celebrations' }
 ];
 ANAS_RAHMATH_PAGES.forEach(p => p.url = 'lookbook/' + p.file);
 
@@ -833,7 +834,8 @@ const NIVIN_ANCY_PAGES = [
   { file: 'nivin-ancy-01.webp', title: 'Nivin & Ancy: Grand Palace Mandap & Lotus Architecture', place: 'Thrissur · Kerala' },
   { file: 'nivin-ancy-02.webp', title: 'Nivin & Ancy: Sacred Mandap Blessings & Family Union', place: 'Guruvayoor Heritage' },
   { file: 'nivin-ancy-03.webp', title: 'Nivin & Ancy: Traditional Kasavu Nuptials & Sacred Vows', place: 'Royal Mandap' },
-  { file: 'nivin-ancy-04.webp', title: 'Nivin & Ancy: Evening Soirée & Reception Finale', place: 'Kochi Beachfront Gala' }
+  { file: 'nivin-ancy-04.webp', title: 'Nivin & Ancy: Evening Soirée & Reception Finale', place: 'Kochi Beachfront Gala' },
+  { file: 'nivin-ancy-05.webp', title: 'Nivin & Ancy: Grand Mandap Architecture & Midnight Ballroom', place: 'Thrissur Palace' }
 ];
 NIVIN_ANCY_PAGES.forEach(p => p.url = 'lookbook/' + p.file);
 
@@ -930,12 +932,12 @@ function cloth(g,W,H,seed,amt){
 function rule(g,x0,y0,x1,y1,col,w){g.strokeStyle=col;g.lineWidth=w;g.beginPath();g.moveTo(x0,y0);g.lineTo(x1,y1);g.stroke();}
 
 const PLATE_SRC = {
-  'mandap': 'lookbook/nivin-ancy-01.webp',
-  'destination': 'lookbook/gokul-anju-01.webp',
-  'stage-lighting': 'lookbook/anas-rahmath-01.webp',
+  'mandap': 'lookbook/cover-mandap.webp',
+  'destination': 'lookbook/cover-destination.webp',
+  'stage-lighting': 'lookbook/cover-stage-lighting.webp',
   'bridal-couture': 'lookbook/spread-01.webp',
   'mangalyam': 'lookbook/spread-04.webp',
-  'reception-galas': 'lookbook/nivin-ancy-04.webp',
+  'reception-galas': 'lookbook/cover-reception-galas.webp',
   'floral-artistry': 'lookbook/spread-02.webp',
   'royal-entry': 'lookbook/spread-05.webp',
   'cinematic-films': 'IMAGES/instagram_photo_1792216845.jpg',
