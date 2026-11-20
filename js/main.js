@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MIVI EVENTS — MASTER INTERACTION & ROUTING SYSTEM
+   MIVI EVENT PLANNERS — MASTER INTERACTION & ROUTING SYSTEM
    ========================================================================== */
 
 (function () {
@@ -79,7 +79,7 @@
       category: 'Destination Weddings',
       location: 'Rajah Hall & Grounds · Muthuvattoor, Thrissur',
       concept: 'An opulent ivory-and-gold pavilion styled with thousands of fragrant white blooms, custom crystal chandeliers, and grand ceremonial entry pathways.',
-      description: 'Designed for a signature destination celebration in Thrissur. The couple envisioned a majestic royal ambiance that respected heritage while offering contemporary luxury. Mivi Events orchestrated the custom stage architecture, ambient amber uplighting, acoustic balance, and guest flow across 1,200 attendees.',
+      description: 'Designed for a signature destination celebration in Thrissur. The couple envisioned a majestic royal ambiance that respected heritage while offering contemporary luxury. Mivi Event Planners orchestrated the custom stage architecture, ambient amber uplighting, acoustic balance, and guest flow across 1,200 attendees.',
       cover: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80',
       gallery: [
         'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80',
@@ -105,7 +105,7 @@
       category: 'Celebrations',
       location: 'Heritage Courtyard · Guruvayoor',
       concept: 'Festive marigold drapery, brass uruli installations, colorful seating lounges, and an energized performance stage.',
-      description: 'A pre-wedding celebration bursting with warmth and rhythm. Mivi Events transformed an open courtyard into a vibrant night bazaar with fairy light roofs, traditional flower carpets, high-end sound engineering, and synchronized dance lighting.',
+      description: 'A pre-wedding celebration bursting with warmth and rhythm. Mivi Event Planners transformed an open courtyard into a vibrant night bazaar with fairy light roofs, traditional flower carpets, high-end sound engineering, and synchronized dance lighting.',
       cover: 'https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?auto=format&fit=crop&w=1200&q=80',
       gallery: [
         'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80',
@@ -131,7 +131,7 @@
       category: 'Corporate & Stage',
       location: 'Commercial Hub · Calicut',
       concept: 'High-gloss black mirror runways, geometric LED matrix tunnels, gold ribbon cutting backdrop, and pyrotechnic cold sparks.',
-      description: 'A flagship store inauguration managed from end to end. Mivi Events delivered flawless VIP management, red carpet media walls, high-definition audio visual setups, and live stream coordination for brand partners.',
+      description: 'A flagship store inauguration managed from end to end. Mivi Event Planners delivered flawless VIP management, red carpet media walls, high-definition audio visual setups, and live stream coordination for brand partners.',
       cover: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80',
       gallery: [
         'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80',
@@ -285,7 +285,7 @@
 
       // Format WhatsApp pre-filled message
       const waText = encodeURIComponent(
-        `*New Enquiry via Mivi Events Website*\n` +
+        `*New Enquiry via Mivi Event Planners Website*\n` +
         `• Name: ${name}\n` +
         `• Phone: ${phone}\n` +
         `• Event Type: ${eventType}\n` +

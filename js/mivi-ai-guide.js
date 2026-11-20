@@ -1,6 +1,6 @@
 /**
- * Mivi Events — AI Guide (Rule-Based, Zero Cost, No API)
- * A smart chatbot that knows everything about Mivi Events
+ * Mivi Event Planners — AI Guide (Rule-Based, Zero Cost, No API)
+ * A smart chatbot that knows everything about Mivi Event Planners
  * and guides visitors through the website.
  */
 
@@ -10,9 +10,9 @@
   // ─── Knowledge Base ───────────────────────────────────────────────────────
   const KNOWLEDGE = {
     greeting: [
-      "Welcome to Mivi Events! ✨ I'm your personal guide. How can I help you plan something unforgettable today?",
+      "Welcome to Mivi Event Planners! ✨ I'm your personal guide. How can I help you plan something unforgettable today?",
       "Hello! I'm Mivi's AI guide. Whether you're planning a dream wedding, a corporate event, or an intimate celebration — I'm here to help!",
-      "Welcome! I'm here to help you explore everything Mivi Events offers. What brings you here today?"
+      "Welcome! I'm here to help you explore everything Mivi Event Planners offers. What brings you here today?"
     ],
     services: {
       weddings: {
@@ -67,7 +67,7 @@
       google_biz: "https://share.google/CDROy0aCBa5HQ1tiP",
       rating: "5.0 Google Business Rating"
     },
-    about: "Mivi Events is a boutique event and media brand based in Thrissur, Kerala. Founded with a desire to elevate celebrations into deeply immersive visual stories, we believe true luxury is found in the harmony of light, space, floral artistry, sound, and hospitality."
+    about: "Mivi Event Planners is a boutique event and media brand based in Thrissur, Kerala. Founded with a desire to elevate celebrations into deeply immersive visual stories, we believe true luxury is found in the harmony of light, space, floral artistry, sound, and hospitality."
   };
 
   // ─── Intent Patterns ─────────────────────────────────────────────────────
@@ -130,7 +130,7 @@
     },
     {
       patterns: ['price', 'cost', 'rate', 'quote', 'package', 'budget', 'how much', 'fee', 'pricing'],
-      handler: () => `Pricing at Mivi Events is bespoke — every event is uniquely scoped based on your vision, guest count, venue, and requirements. We'll craft a custom proposal just for you after a brief consultation.<br><br><a href="contact.html" class="mivi-ai-link">📋 Book Free Consultation →</a>`
+      handler: () => `Pricing at Mivi Event Planners is bespoke — every event is uniquely scoped based on your vision, guest count, venue, and requirements. We'll craft a custom proposal just for you after a brief consultation.<br><br><a href="contact.html" class="mivi-ai-link">📋 Book Free Consultation →</a>`
     },
     {
       patterns: ['faq', 'question', 'doubt', 'query', 'help', 'support'],
@@ -142,7 +142,7 @@
     },
     {
       patterns: ['rating', 'review', 'google', 'reputation'],
-      handler: () => `Mivi Events holds a proud <strong>⭐ 5.0 rating on Google Business</strong>! You can read our client reviews here:<br><br><a href="${KNOWLEDGE.contact.google_biz}" target="_blank" class="mivi-ai-link">🌟 View Google Reviews →</a>`
+      handler: () => `Mivi Event Planners holds a proud <strong>⭐ 5.0 rating on Google Business</strong>! You can read our client reviews here:<br><br><a href="${KNOWLEDGE.contact.google_biz}" target="_blank" class="mivi-ai-link">🌟 View Google Reviews →</a>`
     },
     {
       patterns: ['kerala', 'kochi', 'guruvayoor', 'kovalam', 'destination', 'travel', 'location we serve', 'area'],
@@ -150,11 +150,11 @@
     },
     {
       patterns: ['thank', 'thanks', 'great', 'perfect', 'amazing', 'wonderful', 'awesome'],
-      handler: () => `You're very welcome! ✨ It's our pleasure to help. Is there anything else you'd like to know about Mivi Events?`
+      handler: () => `You're very welcome! ✨ It's our pleasure to help. Is there anything else you'd like to know about Mivi Event Planners?`
     },
     {
       patterns: ['bye', 'goodbye', 'see you', 'exit', 'close'],
-      handler: () => `Thank you for visiting Mivi Events! We look forward to creating something truly unforgettable with you. 🌟 Feel free to chat anytime!`
+      handler: () => `Thank you for visiting Mivi Event Planners! We look forward to creating something truly unforgettable with you. 🌟 Feel free to chat anytime!`
     }
   ];
 
@@ -174,7 +174,7 @@ ${s.inclusions.map(i => `✦ ${i}`).join('<br>')}
   }
 
   function allServicesReply() {
-    return `Here's what we offer at Mivi Events:<br><br>
+    return `Here's what we offer at Mivi Event Planners:<br><br>
 🌸 <strong>Weddings & Celebrations</strong><br>
 📋 <strong>Event Planning & Management</strong><br>
 🎭 <strong>Stage & Event Production</strong><br>
@@ -577,7 +577,7 @@ Or <a href="contact.html" class="mivi-ai-link">contact our team directly →</a>
     // Floating WhatsApp Quick Connect Button
     const waFloat = document.createElement('a');
     waFloat.id = 'mivi-wa-float';
-    waFloat.href = 'https://wa.me/918877229985?text=' + encodeURIComponent('*Hi Mivi Events* — I would like to inquire about wedding/event planning.');
+    waFloat.href = 'https://wa.me/918877229985?text=' + encodeURIComponent('*Hi Mivi Event Planners* — I would like to inquire about wedding/event planning.');
     waFloat.target = '_blank';
     waFloat.rel = 'noopener';
     waFloat.setAttribute('aria-label', 'Chat on WhatsApp');
@@ -591,7 +591,7 @@ Or <a href="contact.html" class="mivi-ai-link">contact our team directly →</a>
     const panel = document.createElement('div');
     panel.id = 'mivi-ai-panel';
     panel.setAttribute('role', 'dialog');
-    panel.setAttribute('aria-label', 'Mivi Events AI Guide');
+    panel.setAttribute('aria-label', 'Mivi Event Planners AI Guide');
     panel.innerHTML = `
       <div class="mivi-ai-header">
         <div class="mivi-ai-avatar">✨</div>

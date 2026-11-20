@@ -33,6 +33,6 @@
 
 - **Studio**: 1st Floor, Ezra Building, 3Star Nagar, Pavaratty, Thrissur, Kerala — 680507
 - **Phone**: [+91 88772 29985](tel:+918877229985)
-- **Maps**: [Mivi Events on Google Maps](https://maps.app.goo.gl/PRL3s9fW9NxNqb749)
+- **Maps**: [Mivi Event Planners on Google Maps](https://maps.app.goo.gl/PRL3s9fW9NxNqb749)
 
 © 2026 Mivi Event Planners. All rights reserved.
