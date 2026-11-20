@@ -813,18 +813,42 @@ if(REDUCED){ K.introStagger=0; K.introWallFade=260; K.introFade=200;
              K.orbitAz=0; K.orbitEl=0; }
 
 const STUDIO = 'Mivi Events';
+
+const GOKUL_ANJU_PAGES = [
+  { file: 'gokul-anju-01.webp', title: 'Gokul & Anju: Sacred Union & Ceremonial Mandap', place: 'Thrissur · Kerala' },
+  { file: 'gokul-anju-02.webp', title: 'Gokul & Anju: Sacred Nuptial Rituals & Blessings', place: 'Traditional Mandap' },
+  { file: 'gokul-anju-03.webp', title: 'Gokul & Anju: Grand Wedding Gala & Stage Scenery', place: 'Kerala Heritage Weddings' }
+];
+GOKUL_ANJU_PAGES.forEach(p => p.url = 'lookbook/' + p.file);
+
+const ANAS_RAHMATH_PAGES = [
+  { file: 'anas-rahmath-01.webp', title: 'Anas & Rahmath: Royal Nikah & Couture Portrait', place: 'Kerala Luxury Celebrations' },
+  { file: 'anas-rahmath-02.webp', title: 'Anas & Rahmath: Bespoke Floral Stage Architecture', place: 'Grand Palace' },
+  { file: 'anas-rahmath-03.webp', title: 'Anas & Rahmath: Cherished Moments & Ambient Illumination', place: 'Twilight Gala' },
+  { file: 'anas-rahmath-04.webp', title: 'Anas & Rahmath: Midnight Gala Scenery & Lighting', place: 'Regal Celebrations' }
+];
+ANAS_RAHMATH_PAGES.forEach(p => p.url = 'lookbook/' + p.file);
+
+const NIVIN_ANCY_PAGES = [
+  { file: 'nivin-ancy-01.webp', title: 'Nivin & Ancy: Grand Palace Mandap & Lotus Architecture', place: 'Thrissur · Kerala' },
+  { file: 'nivin-ancy-02.webp', title: 'Nivin & Ancy: Sacred Mandap Blessings & Family Union', place: 'Guruvayoor Heritage' },
+  { file: 'nivin-ancy-03.webp', title: 'Nivin & Ancy: Traditional Kasavu Nuptials & Sacred Vows', place: 'Royal Mandap' },
+  { file: 'nivin-ancy-04.webp', title: 'Nivin & Ancy: Evening Soirée & Reception Finale', place: 'Kochi Beachfront Gala' }
+];
+NIVIN_ANCY_PAGES.forEach(p => p.url = 'lookbook/' + p.file);
+
 const BOOKS = [
   { id:'mandap', title:'Nivin & Ancy: Grand Mandap', t1:'NIVIN & ANCY', t2:'ROYAL MANDAP',
-    sub:'SACRED NILAVILAKKU & LOTUS ARCHITECTURE', year:'2026', vol:'I', shelf:0, slot:0, spreadIdx:3,
-    spine:'#871a2a', cloth:'#18050c', edge:'#faeec7',
+    sub:'SACRED NILAVILAKKU & LOTUS ARCHITECTURE', year:'2026', vol:'I', shelf:0, slot:0, spreadIdx:0,
+    spine:'#871a2a', cloth:'#18050c', edge:'#faeec7', pages: NIVIN_ANCY_PAGES,
     blurb:'Grand palace mandap architecture with hand-carved pillars, cascading fresh lotus garlands, and sacred brass nilavilakku curated for Nivin & Ancy in Thrissur.' },
   { id:'destination', title:'Gokul & Anju: Sacred Union', t1:'GOKUL & ANJU', t2:'SACRED UNION',
-    sub:'TRADITIONAL KERALA MANDAP & CEREMONY', year:'2026', vol:'II', shelf:0, slot:1, spreadIdx:6,
-    spine:'#9a7522', cloth:'#191409', edge:'#f6ebb4',
+    sub:'TRADITIONAL KERALA MANDAP & CEREMONY', year:'2026', vol:'II', shelf:0, slot:1, spreadIdx:0,
+    spine:'#9a7522', cloth:'#191409', edge:'#f6ebb4', pages: GOKUL_ANJU_PAGES,
     blurb:'Bespoke traditional Kerala wedding ceremony, sacred floral mandap architecture, and magnificent reception curated for Gokul & Anju in Thrissur by Mivi Event Planners.' },
   { id:'stage-lighting', title:'Anas & Rahmath: Royal Nikah', t1:'ANAS & RAHMATH', t2:'ROYAL CELEBRATION',
     sub:'THEATRICAL SCENIC & BESPOKE AMBIENCE', year:'2025', vol:'III', shelf:0, slot:2, spreadIdx:0,
-    spine:'#1f3e5a', cloth:'#0d151e', edge:'#dce5ea',
+    spine:'#1f3e5a', cloth:'#0d151e', edge:'#dce5ea', pages: ANAS_RAHMATH_PAGES,
     blurb:'Grand royal wedding celebration, bespoke crystal stage production, and luxury reception curated for Anas & Rahmath in Kerala by Mivi Event Planners.' },
   { id:'bridal-couture', title:'Shasbeel & N: The Crimson Veil', t1:'SHASBEEL & N', t2:'CRIMSON VEIL',
     sub:'HEIRLOOM ZARDOZI & BRIDAL COUTURE', year:'2025', vol:'IV', shelf:0, slot:3, spreadIdx:1,
@@ -836,8 +860,8 @@ const BOOKS = [
     blurb:'Sacred Mangalyam thread rites, fresh holy basil and jasmine garlands, Nadaswaram ensembles, and authentic Malayali Vedic rituals at Guruvayoor heritage grounds.' },
 
   { id:'reception-galas', title:'Nivin & Ancy: Midnight Soirée', t1:'NIVIN & ANCY', t2:'MIDNIGHT SOIRÉE',
-    sub:'TWILIGHT BALLROOMS & LIVE CELEBRATIONS', year:'2024', vol:'VI', shelf:1, slot:0, spreadIdx:7,
-    spine:'#4a152e', cloth:'#14040c', edge:'#ebd3df',
+    sub:'TWILIGHT BALLROOMS & LIVE CELEBRATIONS', year:'2024', vol:'VI', shelf:1, slot:0, spreadIdx:3,
+    spine:'#4a152e', cloth:'#14040c', edge:'#ebd3df', pages: NIVIN_ANCY_PAGES,
     blurb:'High-octane midnight Sangeet gala, low-lying dry ice fog entries, crystal ceiling drops, and intelligent moving beam concerts in Calicut.' },
   { id:'floral-artistry', title:'Shasbeel & N: Floral Sanctum', t1:'SHASBEEL & N', t2:'FLORAL SANCTUM',
     sub:'DUTCH ROSES & SCULPTURAL BOTANICALS', year:'2024', vol:'VII', shelf:1, slot:1, spreadIdx:2,
@@ -906,12 +930,12 @@ function cloth(g,W,H,seed,amt){
 function rule(g,x0,y0,x1,y1,col,w){g.strokeStyle=col;g.lineWidth=w;g.beginPath();g.moveTo(x0,y0);g.lineTo(x1,y1);g.stroke();}
 
 const PLATE_SRC = {
-  'mandap': 'lookbook/spread-03.webp',
-  'destination': 'lookbook/spread-06.webp',
-  'stage-lighting': 'lookbook/spread-00.webp',
+  'mandap': 'lookbook/nivin-ancy-01.webp',
+  'destination': 'lookbook/gokul-anju-01.webp',
+  'stage-lighting': 'lookbook/anas-rahmath-01.webp',
   'bridal-couture': 'lookbook/spread-01.webp',
   'mangalyam': 'lookbook/spread-04.webp',
-  'reception-galas': 'lookbook/spread-07.webp',
+  'reception-galas': 'lookbook/nivin-ancy-04.webp',
   'floral-artistry': 'lookbook/spread-02.webp',
   'royal-entry': 'lookbook/spread-05.webp',
   'cinematic-films': 'IMAGES/instagram_photo_1792216845.jpg',
@@ -2296,17 +2320,18 @@ function startIntro(){
    THE WEDDING LOOKBOOK ENGINE (Interactive Magazine Reader)
    ════════════════════════════════════════════════════════════════════════ */
 const LOOKBOOK_PAGES = [
-  { file: 'spread-00.webp', title: 'Anas & Rahmath: Royal Nikah & Celebration', place: 'Mivi Grand Celebrations · Kerala' },
+  { file: 'spread-00.webp', title: 'Mivi Events: Celebrating Love Stories', place: 'Mivi Grand Celebrations · Kerala' },
   { file: 'spread-01.webp', title: 'Shasbeel & N: The Crimson Veil', place: 'Thrissur Grand Palace' },
   { file: 'spread-02.webp', title: 'Shasbeel & N: Laughter & Forever Blooms', place: 'Pavaratty · Kerala' },
   { file: 'spread-03.webp', title: 'Mangalyam: Golden Mandap & Sacred Vilakku', place: 'Guruvayoor · Thrissur' },
   { file: 'spread-04.webp', title: 'Mangalyam: Kasavu Nuptials & Lotus Garlands', place: 'Sacred Heritage' },
   { file: 'spread-05.webp', title: 'Mangalyam: Namaskaram & Family Gathering', place: 'Traditional Mandap' },
-  { file: 'spread-06.webp', title: 'Gokul & Anju: Sacred Union & Wedding Gala', place: 'Kerala Traditional Mandap' },
+  { file: 'spread-06.webp', title: 'Coastal Starlight Pavilion: Beachfront Gala', place: 'Kerala Traditional Mandap' },
   { file: 'spread-07.webp', title: 'Nivin & Ancy: Midnight Reception Gala', place: 'Twilight Ballroom' }
 ];
 LOOKBOOK_PAGES.forEach(p => p.url = 'lookbook/' + p.file);
-const LM = LOOKBOOK_PAGES.length;
+
+let ACTIVE_LOOKBOOK_PAGES = LOOKBOOK_PAGES;
 
 const sb3d = document.getElementById('sb3d');
 const sbBook = document.getElementById('sbBook');
@@ -2323,8 +2348,10 @@ let bookStrips = [];
 function bEl(t, c) { const e = document.createElement(t); if (c) e.className = c; return e; }
 
 function bImgEl(i, side) {
+  const pages = ACTIVE_LOOKBOOK_PAGES;
+  const item = pages[i] || pages[0];
   const im = new Image(); im.className = 'sb-half-img ' + side;
-  im.draggable = false; im.alt = LOOKBOOK_PAGES[i].title; im.src = LOOKBOOK_PAGES[i].url; return im;
+  im.draggable = false; im.alt = item.title; im.src = item.url; return im;
 }
 
 function bHalfEl(pos, i) {
@@ -2340,6 +2367,9 @@ function buildCurl(dir, from, to) {
   c.style.setProperty('--n', STRIP_N);
   c.style.setProperty('--span', SPAN);
   let host = c;
+  const pages = ACTIVE_LOOKBOOK_PAGES;
+  const pFrom = pages[from] || pages[0];
+  const pTo = pages[to] || pages[0];
   for (let i = 0; i < STRIP_N; i++) {
     const s = bEl('div', 'strip');
     s.style.setProperty('--i', i);
@@ -2352,8 +2382,8 @@ function buildCurl(dir, from, to) {
       e.style.backgroundImage = 'url(' + url + ')';
       e.style.backgroundPositionX = px;
     };
-    dress(f, LOOKBOOK_PAGES[from].url, dir === 'next' ? A : B);
-    dress(b, LOOKBOOK_PAGES[to].url, dir === 'next' ? B : A);
+    dress(f, pFrom.url, dir === 'next' ? A : B);
+    dress(b, pTo.url, dir === 'next' ? B : A);
     f.appendChild(bEl('div', 'sh')); f.appendChild(bEl('div', 'gl'));
     b.appendChild(bEl('div', 'sh')); b.appendChild(bEl('div', 'gl'));
     s.appendChild(f); s.appendChild(b);
@@ -2389,7 +2419,8 @@ function paintBook() {
   sbBook.textContent = '';
   if (!bookTurn) {
     const f = bEl('div', 'sb-full');
-    const im = new Image(); im.src = LOOKBOOK_PAGES[bookIdx].url; im.alt = LOOKBOOK_PAGES[bookIdx].title;
+    const cur = ACTIVE_LOOKBOOK_PAGES[bookIdx] || ACTIVE_LOOKBOOK_PAGES[0];
+    const im = new Image(); im.src = cur.url; im.alt = cur.title;
     im.draggable = false;
     f.appendChild(im); sbBook.appendChild(f);
     if (sb3d) sb3d.style.setProperty('--shade', '0');
@@ -2416,11 +2447,14 @@ function captionBook() {
   sbCapBox.textContent = '';
   bCapOut = bCapIn = null;
   if (bookTurn) {
-    bCapOut = bEl('p', 'sb-caption live'); bCapOut.textContent = LOOKBOOK_PAGES[bookTurn.from].title; sbCapBox.appendChild(bCapOut);
-    bCapIn = bEl('p', 'sb-caption live'); bCapIn.textContent = LOOKBOOK_PAGES[bookTurn.to].title; sbCapBox.appendChild(bCapIn);
+    const pFrom = ACTIVE_LOOKBOOK_PAGES[bookTurn.from] || ACTIVE_LOOKBOOK_PAGES[0];
+    const pTo = ACTIVE_LOOKBOOK_PAGES[bookTurn.to] || ACTIVE_LOOKBOOK_PAGES[0];
+    bCapOut = bEl('p', 'sb-caption live'); bCapOut.textContent = pFrom.title; sbCapBox.appendChild(bCapOut);
+    bCapIn = bEl('p', 'sb-caption live'); bCapIn.textContent = pTo.title; sbCapBox.appendChild(bCapIn);
     fadeBookCaption(bookTurn.t);
   } else {
-    const p = bEl('p', 'sb-caption'); p.textContent = LOOKBOOK_PAGES[bookIdx].title; sbCapBox.appendChild(p);
+    const cur = ACTIVE_LOOKBOOK_PAGES[bookIdx] || ACTIVE_LOOKBOOK_PAGES[0];
+    const p = bEl('p', 'sb-caption'); p.textContent = cur.title; sbCapBox.appendChild(p);
   }
 }
 
@@ -2553,7 +2587,8 @@ function startBookTurn(dir, t) {
   if (bookTurn) { bookIdx = bookTurn.to; bookTurn = null; }
   shoveLoupe(dir);
   const from = bookIdx;
-  bookTurn = { dir: dir, from: from, to: dir === 'next' ? (from + 1) % LM : (from - 1 + LM) % LM, t: t || 0 };
+  const lm = ACTIVE_LOOKBOOK_PAGES.length || 1;
+  bookTurn = { dir: dir, from: from, to: dir === 'next' ? (from + 1) % lm : (from - 1 + lm) % lm, t: t || 0 };
   paintBook();
 }
 function commitBookTurn() {
@@ -2614,7 +2649,8 @@ function placeLoupe() {
   loupe.style.transform = 'translate(' + (loupePos.x - lr / 2).toFixed(1) + 'px,' + (loupePos.y - lr / 2).toFixed(1) + 'px)';
   if (loupeLens) {
     const magScale = 2.4;
-    loupeLens.style.backgroundImage = 'url(' + LOOKBOOK_PAGES[bookIdx].url + ')';
+    const cur = ACTIVE_LOOKBOOK_PAGES[bookIdx] || ACTIVE_LOOKBOOK_PAGES[0];
+    loupeLens.style.backgroundImage = 'url(' + (cur ? cur.url : '') + ')';
     loupeLens.style.backgroundSize = (bw * magScale).toFixed(1) + 'px auto';
     loupeLens.style.backgroundPosition = (-loupePos.x * magScale + lr / 2).toFixed(1) + 'px ' + (-loupePos.y * magScale + lr / 2).toFixed(1) + 'px';
   }
@@ -2672,7 +2708,8 @@ if (zIn) zIn.addEventListener('click', () => setZoom(0.2));
 function syncZoomLayer() {
   if (!zoomInner) return;
   zoomInner.textContent = '';
-  const im = new Image(); im.src = LOOKBOOK_PAGES[bookIdx].url; im.alt = '';
+  const cur = ACTIVE_LOOKBOOK_PAGES[bookIdx] || ACTIVE_LOOKBOOK_PAGES[0];
+  const im = new Image(); im.src = cur ? cur.url : ''; im.alt = '';
   zoomInner.appendChild(im);
 }
 
@@ -2681,6 +2718,12 @@ function openLookbookModal(B) {
   const bData = B ? B.data : BOOKS[0];
   const modal = document.getElementById('lookbook-modal');
   if (!modal) return;
+  
+  if (bData && bData.pages && bData.pages.length) {
+    ACTIVE_LOOKBOOK_PAGES = bData.pages;
+  } else {
+    ACTIVE_LOOKBOOK_PAGES = LOOKBOOK_PAGES;
+  }
   
   modal.classList.add('on');
   modal.setAttribute('aria-hidden', 'false');
@@ -2692,7 +2735,7 @@ function openLookbookModal(B) {
   }
   
   const targetSpread = (bData && typeof bData.spreadIdx === 'number') ? bData.spreadIdx : 0;
-  bookIdx = targetSpread;
+  bookIdx = Math.min(targetSpread, ACTIVE_LOOKBOOK_PAGES.length - 1);
   bookTurn = null;
   
   setTimeout(() => {
