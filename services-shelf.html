@@ -118,8 +118,7 @@
       font-size: 13px;
     }
     .wash {
-      width: 100vw;
-      background: radial-gradient(circle at 50% 80%, rgba(206,186,157,.95) 0%, rgba(206,186,157,0) 80%);
+      display: none !important;
     }
     .detail {
       left: 10px;
@@ -218,6 +217,60 @@
     }
     .tli h2 {
       font-size: 12px;
+    }
+  }
+
+  /* ---------- interactive guidance badge ---------- */
+  .shelf-guide-badge {
+    position: fixed;
+    top: 68px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 22;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: rgba(22, 5, 12, 0.90);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 999px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--gold-light);
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    pointer-events: auto;
+    cursor: pointer;
+    animation: guideFloat 3s infinite ease-in-out;
+    transition: all 0.35s ease;
+    white-space: nowrap;
+  }
+  .shelf-guide-badge:hover {
+    background: rgba(38, 12, 22, 0.96);
+    border-color: #d4af37;
+    transform: translateX(-50%) scale(1.03);
+    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.45);
+  }
+  .shelf-guide-badge.active-mode {
+    background: var(--gold-gradient);
+    color: #0e0206;
+    border-color: #d4af37;
+    font-weight: 700;
+    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.55);
+  }
+  @keyframes guideFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-3px); }
+  }
+  @media (max-width: 768px) {
+    .shelf-guide-badge {
+      top: 56px;
+      padding: 7px 14px;
+      font-size: 11.5px;
+      max-width: calc(100% - 24px);
     }
   }
 
@@ -824,6 +877,11 @@
   </div>
 </header>
 
+<div class="shelf-guide-badge" id="shelfGuideBadge" role="status" aria-label="Interactive guide">
+  <span class="guide-icon" id="shelfGuideIcon">✨</span>
+  <span class="guide-text" id="shelfGuideText">Tap any wedding volume to draw from shelf</span>
+</div>
+
 <canvas class="wash" id="wash" aria-hidden="true"></canvas>
 <div class="detail" id="detail">
   <p class="meta" id="detail-meta"></p>
@@ -980,6 +1038,31 @@ const NIVIN_ANCY_PAGES = [
 ];
 NIVIN_ANCY_PAGES.forEach(p => p.url = 'lookbook/' + p.file);
 
+const ATHIRA_VISHNU_PAGES = [
+  { file: 'athira-vishnu-01.webp', title: 'Athira & Vishnu: Temple Sanctum & Sacred Union', place: 'Thrissur Heritage · Kerala' },
+  { file: 'athira-vishnu-02.webp', title: 'Athira & Vishnu: Radiant Moments & Nuptial Vows', place: 'Sacred Mandap' },
+  { file: 'athira-vishnu-03.webp', title: 'Athira & Vishnu: Bridal Elegance & Temple Silks', place: 'Traditional Nuptials' },
+  { file: 'athira-vishnu-04.webp', title: 'Athira & Vishnu: Grand Mandap & Floral Pavilion', place: 'Heritage Celebrations' },
+  { file: 'athira-vishnu-05.webp', title: 'Athira & Vishnu: Nuptial Grandeur & Evening Atmosphere', place: 'Mivi Grand Celebrations' }
+];
+ATHIRA_VISHNU_PAGES.forEach(p => p.url = 'lookbook/' + p.file);
+
+const RASHID_SUNAINA_PAGES = [
+  { file: 'rashid-sunaina-01.webp', title: 'Rashid & Sunaina: Royal Nikah & Palace Celebrations', place: 'Grand Palace · Kerala' },
+  { file: 'rashid-sunaina-02.webp', title: 'Rashid & Sunaina: A Union of Elegance & Devotion', place: 'Royal Celebration' },
+  { file: 'rashid-sunaina-03.webp', title: 'Rashid & Sunaina: Bridal Radiance & Heirloom Couture', place: 'Bespoke Couture' },
+  { file: 'rashid-sunaina-04.webp', title: 'Rashid & Sunaina: Grand Royal Stage Architecture', place: 'Theatrical Scenic' },
+  { file: 'rashid-sunaina-05.webp', title: 'Rashid & Sunaina: Midnight Gala Reception Finale', place: 'Mivi Grand Celebrations' }
+];
+RASHID_SUNAINA_PAGES.forEach(p => p.url = 'lookbook/' + p.file);
+
+const SREERANJINI_SYAM_PAGES = [
+  { file: 'sreeranjini-syam-01.webp', title: 'Sreeranjini & Syam: Vedic Traditions & Sacred Nuptials', place: 'Kerala Heritage Grounds' },
+  { file: 'sreeranjini-syam-02.webp', title: 'Sreeranjini & Syam: Timeless Devotion & Temple Blessings', place: 'Sacred Mandap' },
+  { file: 'sreeranjini-syam-03.webp', title: 'Sreeranjini & Syam: Cherished Family Moments & Feast', place: 'Mivi Event Planners · Pavaratty' }
+];
+SREERANJINI_SYAM_PAGES.forEach(p => p.url = 'lookbook/' + p.file);
+
 const BOOKS = [
   { id:'mandap', title:'Nivin & Ancy: Grand Mandap', t1:'NIVIN & ANCY', t2:'ROYAL MANDAP',
     sub:'SACRED NILAVILAKKU & LOTUS ARCHITECTURE', year:'2026', vol:'I', shelf:0, slot:0, spreadIdx:0,
@@ -993,35 +1076,35 @@ const BOOKS = [
     sub:'THEATRICAL SCENIC & BESPOKE AMBIENCE', year:'2025', vol:'III', shelf:0, slot:2, spreadIdx:0,
     spine:'#1f3e5a', cloth:'#0d151e', edge:'#dce5ea', pages: ANAS_RAHMATH_PAGES,
     blurb:'Grand royal wedding celebration, bespoke crystal stage production, and luxury reception curated for Anas & Rahmath in Kerala by Mivi Event Planners.' },
-  { id:'bridal-couture', title:'Shasbeel & N: The Crimson Veil', t1:'SHASBEEL & N', t2:'CRIMSON VEIL',
-    sub:'HEIRLOOM ZARDOZI & BRIDAL COUTURE', year:'2025', vol:'IV', shelf:0, slot:3, spreadIdx:1,
-    spine:'#9c1c30', cloth:'#1c050b', edge:'#f4dec4',
-    blurb:'The Crimson Veil signature bridal couture, hand-woven gold Kasavu silks, royal emerald accents, and regal entry choreography orchestrated in Thrissur Grand Palace.' },
-  { id:'mangalyam', title:'Sacred Mangalyam Traditions', t1:'SACRED', t2:'MANGALYAM',
-    sub:'AUTHENTIC KERALA RITUALS & TEMPLE SANCTUM', year:'2025', vol:'V', shelf:0, slot:4, spreadIdx:4,
-    spine:'#b8860b', cloth:'#1c1404', edge:'#fcf3cf',
-    blurb:'Sacred Mangalyam thread rites, fresh holy basil and jasmine garlands, Nadaswaram ensembles, and authentic Malayali Vedic rituals at Guruvayoor heritage grounds.' },
+  { id:'athira-vishnu', title:'Athira & Vishnu: Temple Sanctum', t1:'ATHIRA & VISHNU', t2:'TEMPLE SANCTUM',
+    sub:'TRADITIONAL KASAVU SILKS & FLORAL ART', year:'2025', vol:'IV', shelf:0, slot:3, spreadIdx:0,
+    spine:'#9c1c30', cloth:'#1c050b', edge:'#f4dec4', pages: ATHIRA_VISHNU_PAGES,
+    blurb:'Authentic Kerala temple wedding traditions, handcrafted floral mandap architecture, and serene nuptial rituals curated for Athira & Vishnu by Mivi Event Planners.' },
+  { id:'rashid-sunaina', title:'Rashid & Sunaina: Royal Nikah', t1:'RASHID & SUNAINA', t2:'ROYAL NIKAH',
+    sub:'THEATRICAL LIGHTING & GRAND STAGE', year:'2025', vol:'V', shelf:0, slot:4, spreadIdx:0,
+    spine:'#1b4d3e', cloth:'#071712', edge:'#d4edda', pages: RASHID_SUNAINA_PAGES,
+    blurb:'Majestic royal Nikah celebration, bespoke velvet couture, theatrical concert-grade illumination, and grand palace stage architecture for Rashid & Sunaina.' },
 
+  { id:'sreeranjini-syam', title:'Sreeranjini & Syam: Vedic Traditions', t1:'SREERANJINI & SYAM', t2:'VEDIC TRADITIONS',
+    sub:'SACRED MANDAP & NILAVILAKKU BLESSINGS', year:'2024', vol:'VI', shelf:1, slot:0, spreadIdx:0,
+    spine:'#b8860b', cloth:'#1c1404', edge:'#fcf3cf', pages: SREERANJINI_SYAM_PAGES,
+    blurb:'Sacred Vedic thread rites, authentic Malayali kasavu silks, resonant Nadaswaram melodies, and heartfelt family union for Sreeranjini & Syam in Kerala.' },
   { id:'reception-galas', title:'Nivin & Ancy: Midnight Soirée', t1:'NIVIN & ANCY', t2:'MIDNIGHT SOIRÉE',
-    sub:'TWILIGHT BALLROOMS & LIVE CELEBRATIONS', year:'2024', vol:'VI', shelf:1, slot:0, spreadIdx:3,
+    sub:'TWILIGHT BALLROOMS & LIVE CELEBRATIONS', year:'2024', vol:'VII', shelf:1, slot:1, spreadIdx:3,
     spine:'#4a152e', cloth:'#14040c', edge:'#ebd3df', pages: NIVIN_ANCY_PAGES,
     blurb:'High-octane midnight Sangeet gala, low-lying dry ice fog entries, crystal ceiling drops, and intelligent moving beam concerts in Calicut.' },
-  { id:'floral-artistry', title:'Shasbeel & N: Floral Sanctum', t1:'SHASBEEL & N', t2:'FLORAL SANCTUM',
-    sub:'DUTCH ROSES & SCULPTURAL BOTANICALS', year:'2024', vol:'VII', shelf:1, slot:1, spreadIdx:2,
-    spine:'#2d5334', cloth:'#0a170d', edge:'#ddedd6',
-    blurb:'Over 25,000 fresh pink Dutch roses, fragrant jasmine ceilings, royal marigold pathways, and bespoke floral photo pavilions styled in Pavaratty.' },
-  { id:'royal-entry', title:'Namaskaram & Royal Procession', t1:'ROYAL ENTRY', t2:'& PROCESSIONS',
-    sub:'CAPARISONED TUSKERS & COLD SPARKS', year:'2024', vol:'VIII', shelf:1, slot:2, spreadIdx:5,
-    spine:'#8a401b', cloth:'#170c06', edge:'#f0d9c4',
-    blurb:'Theatrical caparisoned elephant processions, Panchavadyam percussion, cold-spark pyrotechnics, and royal couple arrivals orchestrated with flawless grace.' },
-  { id:'cinematic-films', title:'Wedding Films & Cinema', t1:'WEDDING FILMS', t2:'& 4K CINEMA',
-    sub:'DAVINCI MASTER COLOR & LOVE STORIES', year:'2024', vol:'IX', shelf:1, slot:3, spreadIdx:0,
-    spine:'#2b2342', cloth:'#0f0c18', edge:'#ddd5eb',
-    blurb:'Editorial wedding albums, cinematic 4K master films, aerial drone perspectives, and heartfelt emotional documentary archives by Mivi Media.' },
-  { id:'hospitality-catering', title:'Royal Sadhya & Banquets', t1:'ROYAL SADHYA', t2:'& BANQUETS',
-    sub:'30-DISH FEASTS & CONCIERGE HOSPITALITY', year:'2023', vol:'X', shelf:1, slot:4, spreadIdx:4,
-    spine:'#65421f', cloth:'#170e06', edge:'#ebdccb',
-    blurb:'Traditional 30-dish royal Kerala Sadhya feasts, gourmet live catering stations, red-carpet welcome hospitality, and personalized VIP concierge care in Pavaratty.' },
+  { id:'rashid-gala', title:'Rashid & Sunaina: Midnight Palace', t1:'RASHID & SUNAINA', t2:'MIDNIGHT PALACE',
+    sub:'GRAND ARCHES & SCULPTURAL BOTANICALS', year:'2024', vol:'VIII', shelf:1, slot:2, spreadIdx:3,
+    spine:'#8a401b', cloth:'#170c06', edge:'#f0d9c4', pages: RASHID_SUNAINA_PAGES,
+    blurb:'Theatrical sculpted arches, cascading Dutch roses, moving beam light orchestrations, and royal couple arrival for Rashid & Sunaina.' },
+  { id:'athira-celebration', title:'Athira & Vishnu: Floral Sanctum', t1:'ATHIRA & VISHNU', t2:'FLORAL SANCTUM',
+    sub:'DUTCH ROSES & CEREMONIAL MANDAP', year:'2024', vol:'IX', shelf:1, slot:3, spreadIdx:3,
+    spine:'#2d5334', cloth:'#0a170d', edge:'#ddedd6', pages: ATHIRA_VISHNU_PAGES,
+    blurb:'Over 20,000 fresh fragrant blooms, bespoke botanical photo pavilions, and sacred ceremony styling for Athira & Vishnu by Mivi Event Planners.' },
+  { id:'anas-twilight', title:'Anas & Rahmath: Twilight Soirée', t1:'ANAS & RAHMATH', t2:'TWILIGHT SOIRÉE',
+    sub:'CRYSTAL ARCHITECTURE & MIDNIGHT GALA', year:'2023', vol:'X', shelf:1, slot:4, spreadIdx:3,
+    spine:'#2b2342', cloth:'#0f0c18', edge:'#ddd5eb', pages: ANAS_RAHMATH_PAGES,
+    blurb:'Grand royal banquet, intelligent moving beam concerts, crystal chandelier drops, and red-carpet welcome hospitality for Anas & Rahmath in Kerala.' },
 ];
 
 /* ════════════════════════════════════════════════════════════════════════
@@ -1076,25 +1159,25 @@ const PLATE_SRC = {
   'mandap': 'lookbook/cover-mandap.webp',
   'destination': 'lookbook/cover-destination.webp',
   'stage-lighting': 'lookbook/cover-stage-lighting.webp',
-  'bridal-couture': 'lookbook/spread-01.webp',
-  'mangalyam': 'lookbook/spread-04.webp',
+  'athira-vishnu': 'lookbook/cover-athira-vishnu.webp',
+  'rashid-sunaina': 'lookbook/cover-rashid-sunaina.webp',
+  'sreeranjini-syam': 'lookbook/cover-sreeranjini-syam.webp',
   'reception-galas': 'lookbook/cover-reception-galas.webp',
-  'floral-artistry': 'lookbook/spread-02.webp',
-  'royal-entry': 'lookbook/spread-05.webp',
-  'cinematic-films': 'IMAGES/instagram_photo_1792216845.jpg',
-  'hospitality-catering': 'IMAGES/instagram_photo_1792216856.jpg'
+  'rashid-gala': 'lookbook/cover-rashid-gala.webp',
+  'athira-celebration': 'lookbook/cover-athira-celebration.webp',
+  'anas-twilight': 'lookbook/cover-anas-twilight.webp'
 };
 const MARK_SRC = {
   'mandap': 'logo.png',
   'destination': 'logo.png',
   'stage-lighting': 'logo.png',
-  'bridal-couture': 'logo.png',
-  'mangalyam': 'logo.png',
+  'athira-vishnu': 'logo.png',
+  'rashid-sunaina': 'logo.png',
+  'sreeranjini-syam': 'logo.png',
   'reception-galas': 'logo.png',
-  'floral-artistry': 'logo.png',
-  'royal-entry': 'logo.png',
-  'cinematic-films': 'logo.png',
-  'hospitality-catering': 'logo.png'
+  'rashid-gala': 'logo.png',
+  'athira-celebration': 'logo.png',
+  'anas-twilight': 'logo.png'
 };
 const PLATE = {};
 function loadPlates(){
@@ -1959,7 +2042,8 @@ function hoverOut(B){
 }
 function activeZ(){
   const camZ=camera.position.z;
-  const fill=MOBILE?0.86:0.60;
+  const isNarrow = (window.innerWidth < 768) || (VW < 768);
+  const fill = isNarrow ? 0.54 : (MOBILE ? 0.86 : 0.60);
   const halfH=(SZH*0.5)/fill;
   const dv=halfH/Math.tan(K.fov*Math.PI/360);
   const halfW=(SZW*0.5)/fill;
@@ -1969,8 +2053,8 @@ function activeZ(){
 function toActive(B){
   S.anim='animatingForward'; hoverIn(B);
   B.tSeat.start([0],K.activeDuration*0.55,easeSettle,K.activeDuration*0.12);
-  const isNarrow = VW < 768;
-  const ay = isNarrow ? (K.boxCY + 0.32) : (K.boxCY - 0.02);
+  const isNarrow = (window.innerWidth < 768) || (VW < 768);
+  const ay = isNarrow ? (K.boxCY + 0.36) : (K.boxCY - 0.02);
   const ax = isNarrow ? 0 : K.activeX;
   B.tActiveP.start([ax,ay,activeZ()],K.activeDuration,activeEase);
   B.tActiveR.start([...K.activeRot],K.activeDuration,activeEase);
@@ -2002,6 +2086,11 @@ function clearActive(){
   const B=S.active;S.active=null;
   detailEl.classList.remove('on');document.body.classList.remove('reading');WASH.target=0;hintEl.classList.remove('on');
   mDetails.textContent='Details';
+  if(guideBadge && guideText){
+    guideBadge.classList.remove('active-mode');
+    if(guideIcon) guideIcon.textContent = '✨';
+    guideText.textContent = 'Tap any wedding volume to draw from shelf';
+  }
   dragReset();
   toInactive(B);
 }
@@ -2248,13 +2337,30 @@ const mbar=document.getElementById('mbar'), mMeta=document.getElementById('mbar-
       menu=document.getElementById('menu');
 const M={scroll:0,target:0,index:0,dragging:false,lastY:0};
 
+const guideBadge = document.getElementById('shelfGuideBadge');
+const guideText = document.getElementById('shelfGuideText');
+const guideIcon = document.getElementById('shelfGuideIcon');
+if(guideBadge){
+  guideBadge.addEventListener('click', e => {
+    e.stopPropagation();
+    if(S.active) openLookbookModal(S.active);
+    else setActive(books[0]);
+  });
+}
+
 function showDetail(B){
   const d=B.data;
   dMeta.textContent=`${STUDIO} · ${d.year} · Volume ${d.vol}`;
   dTitle.textContent=d.title; dDesc.textContent=d.blurb;
-  detailEl.classList.add('on'); document.body.classList.add('reading'); WASH.target=1;
+  detailEl.classList.add('on'); document.body.classList.add('reading');
+  if(window.innerWidth >= 768){ WASH.target=1; } else { WASH.target=0; }
   if(MOBILE){ mMeta.textContent=`${STUDIO} · ${d.year}`; mTitle.textContent=d.title;
               mDetails.textContent='Close'; }
+  if(guideBadge && guideText){
+    guideBadge.classList.add('active-mode');
+    if(guideIcon) guideIcon.textContent = '📖';
+    guideText.textContent = 'Tap 3D Book to Read Lookbook Magazine';
+  }
 }
 dClose.addEventListener('click',e=>{e.stopPropagation();clearActive();});
 dLook.addEventListener('click',e=>{e.stopPropagation();if(S.active)openLookbookModal(S.active);else openLookbookModal(books[0]);});
@@ -2959,6 +3065,7 @@ function openLookbookModal(B) {
   modal.classList.add('on');
   modal.setAttribute('aria-hidden', 'false');
   document.body.classList.add('lb-open');
+  if(guideBadge) guideBadge.style.display = 'none';
   
   const volTag = document.getElementById('lbVolTag');
   if (volTag && bData) {
@@ -2990,6 +3097,7 @@ function closeLookbookModal() {
   modal.classList.remove('on');
   modal.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('lb-open');
+  if(guideBadge) guideBadge.style.display = 'inline-flex';
 }
 
 const lbCloseBtn = document.getElementById('lbCloseBtn');
